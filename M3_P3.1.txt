@@ -1,0 +1,637 @@
+Microsoft Windows [Version 10.0.18363.836]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\Admin>mysql -u root -p
+Enter password: ****
+ERROR 2003 (HY000): Can't connect to MySQL server on 'localhost' (10061)
+
+C:\Users\Admin>mysql -u root -o
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+
+C:\Users\Admin>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.20 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| bank_accounts_mng  |
+| car_showroom       |
+| classicmodels      |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| testdatabase       |
+| world              |
++--------------------+
+10 rows in set (0.01 sec)
+
+mysql> select classicmodels.productCode, classicmodels.productName from classicmodels.products;
+ERROR 1054 (42S22): Unknown column 'classicmodels.productCode' in 'field list'
+mysql> use classicmodels;
+Database changed
+mysql> select productcode, productname, buyprice, quantityinstock from products
+    -> where buyprice > 56.76 and quantityinstock >10;
++-------------+-----------------------------------------+----------+-----------------+
+| productcode | productname                             | buyprice | quantityinstock |
++-------------+-----------------------------------------+----------+-----------------+
+| S10_1949    | 1952 Alpine Renault 1300                |    98.58 |            7305 |
+| S10_2016    | 1996 Moto Guzzi 1100i                   |    68.99 |            6625 |
+| S10_4698    | 2003 Harley-Davidson Eagle Drag Bike    |    91.02 |            5582 |
+| S10_4757    | 1972 Alfa Romeo GTA                     |    85.68 |            3252 |
+| S10_4962    | 1962 LanciaA Delta 16V                  |   103.42 |            6791 |
+| S12_1099    | 1968 Ford Mustang                       |    95.34 |              68 |
+| S12_1108    | 2001 Ferrari Enzo                       |    95.59 |            3619 |
+| S12_1666    | 1958 Setra Bus                          |    77.90 |            1579 |
+| S12_2823    | 2002 Suzuki XREO                        |    66.27 |            9997 |
+| S12_3148    | 1969 Corvair Monza                      |    89.14 |            6906 |
+| S12_3380    | 1968 Dodge Charger                      |    75.16 |            9123 |
+| S12_3891    | 1969 Ford Falcon                        |    83.05 |            1049 |
+| S12_4675    | 1969 Dodge Charger                      |    58.73 |            7323 |
+| S18_1097    | 1940 Ford Pickup Truck                  |    58.33 |            2613 |
+| S18_1129    | 1993 Mazda RX-7                         |    83.51 |            3975 |
+| S18_1342    | 1937 Lincoln Berline                    |    60.62 |            8693 |
+| S18_1589    | 1965 Aston Martin DB5                   |    65.96 |            9042 |
+| S18_1662    | 1980s Black Hawk Helicopter             |    77.27 |            5330 |
+| S18_1749    | 1917 Grand Touring Sedan                |    86.70 |            2724 |
+| S18_1984    | 1995 Honda Civic                        |    93.89 |            9772 |
+| S18_2238    | 1998 Chrysler Plymouth Prowler          |   101.51 |            4724 |
+| S18_2319    | 1964 Mercedes Tour Bus                  |    74.86 |            8258 |
+| S18_2325    | 1932 Model A Ford J-Coupe               |    58.48 |            9354 |
+| S18_2795    | 1928 Mercedes-Benz SSK                  |    72.56 |             548 |
+| S18_2949    | 1913 Ford Model T Speedster             |    60.78 |            4189 |
+| S18_3136    | 18th Century Vintage Horse Carriage     |    60.74 |            5992 |
+| S18_3140    | 1903 Ford Model A                       |    68.30 |            3913 |
+| S18_3232    | 1992 Ferrari 360 Spider red             |    77.90 |            8347 |
+| S18_3233    | 1985 Toyota Supra                       |    57.01 |            7733 |
+| S18_3259    | Collectable Wooden Train                |    67.56 |            6450 |
+| S18_3320    | 1917 Maxwell Touring Car                |    57.54 |            7913 |
+| S18_3482    | 1976 Ford Gran Torino                   |    73.49 |            9127 |
+| S18_3685    | 1948 Porsche Type 356 Roadster          |    62.16 |            8990 |
+| S18_3856    | 1941 Chevrolet Special Deluxe Cabriolet |    64.58 |            2378 |
+| S18_4027    | 1970 Triumph Spitfire                   |    91.92 |            5545 |
+| S18_4600    | 1940s Ford truck                        |    84.76 |            3128 |
+| S18_4721    | 1957 Corvette Convertible               |    69.93 |            1249 |
+| S24_1578    | 1997 BMW R 1100 S                       |    60.86 |            7003 |
+| S24_1785    | 1928 British Royal Navy Airplane        |    66.74 |            3627 |
+| S24_2011    | 18th century schooner                   |    82.34 |            1898 |
+| S24_2300    | 1962 Volkswagen Microbus                |    61.34 |            2327 |
+| S24_2887    | 1952 Citroen-15CV                       |    72.82 |            1452 |
+| S24_3432    | 2002 Chevy Corvette                     |    62.11 |            9446 |
+| S24_3856    | 1956 Porsche 356A Coupe                 |    98.30 |            6600 |
+| S24_4048    | 1992 Porsche Cayenne Turbo Silver       |    69.78 |            6582 |
+| S24_4258    | 1936 Chrysler Airflow                   |    57.46 |            4710 |
+| S32_1374    | 1997 BMW F650 ST                        |    66.92 |             178 |
+| S50_1392    | Diamond T620 Semi-Skirted Tanker        |    68.29 |            1016 |
+| S700_2466   | America West Airlines B757-200          |    68.80 |            9653 |
+| S700_2834   | ATA: B757-300                           |    59.33 |            7106 |
++-------------+-----------------------------------------+----------+-----------------+
+50 rows in set (0.01 sec)
+
+mysql> SELECT productCode, productName, buyprice, textDescription
+    -> FROM products
+    -> INNER JOIN productlines
+    -> ON products.productline = productlines.productline
+    -> WHERE buyprice >56.76 AND buyprice < 95.59;
++-------------+-----------------------------------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| productCode | productName                             | buyprice | textDescription                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
++-------------+-----------------------------------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| S10_4757    | 1972 Alfa Romeo GTA                     |    85.68 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S12_1099    | 1968 Ford Mustang                       |    95.34 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S12_3148    | 1969 Corvair Monza                      |    89.14 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S12_3380    | 1968 Dodge Charger                      |    75.16 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S12_3891    | 1969 Ford Falcon                        |    83.05 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S12_4675    | 1969 Dodge Charger                      |    58.73 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S18_1129    | 1993 Mazda RX-7                         |    83.51 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S18_1589    | 1965 Aston Martin DB5                   |    65.96 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S18_1984    | 1995 Honda Civic                        |    93.89 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S18_3232    | 1992 Ferrari 360 Spider red             |    77.90 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S18_3233    | 1985 Toyota Supra                       |    57.01 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S18_3482    | 1976 Ford Gran Torino                   |    73.49 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S18_3685    | 1948 Porsche Type 356 Roadster          |    62.16 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S18_4027    | 1970 Triumph Spitfire                   |    91.92 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S18_4721    | 1957 Corvette Convertible               |    69.93 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S24_2887    | 1952 Citroen-15CV                       |    72.82 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S24_3432    | 2002 Chevy Corvette                     |    62.11 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S24_4048    | 1992 Porsche Cayenne Turbo Silver       |    69.78 | Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office. |
+| S10_2016    | 1996 Moto Guzzi 1100i                   |    68.99 | Our motorcycles are state of the art replicas of classic as well as contemporary motorcycle legends such as Harley Davidson, Ducati and Vespa. Models contain stunning details such as official logos, rotating wheels, working kickstand, front suspension, gear-shift lever, footbrake lever, and drive chain. Materials used include diecast and plastic. The models range in size from 1:10 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. All models come fully assembled and ready for display in the home or office. Most include a certificate of authenticity.                                                                                                                                             |
+| S10_4698    | 2003 Harley-Davidson Eagle Drag Bike    |    91.02 | Our motorcycles are state of the art replicas of classic as well as contemporary motorcycle legends such as Harley Davidson, Ducati and Vespa. Models contain stunning details such as official logos, rotating wheels, working kickstand, front suspension, gear-shift lever, footbrake lever, and drive chain. Materials used include diecast and plastic. The models range in size from 1:10 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. All models come fully assembled and ready for display in the home or office. Most include a certificate of authenticity.                                                                                                                                             |
+| S12_2823    | 2002 Suzuki XREO                        |    66.27 | Our motorcycles are state of the art replicas of classic as well as contemporary motorcycle legends such as Harley Davidson, Ducati and Vespa. Models contain stunning details such as official logos, rotating wheels, working kickstand, front suspension, gear-shift lever, footbrake lever, and drive chain. Materials used include diecast and plastic. The models range in size from 1:10 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. All models come fully assembled and ready for display in the home or office. Most include a certificate of authenticity.                                                                                                                                             |
+| S24_1578    | 1997 BMW R 1100 S                       |    60.86 | Our motorcycles are state of the art replicas of classic as well as contemporary motorcycle legends such as Harley Davidson, Ducati and Vespa. Models contain stunning details such as official logos, rotating wheels, working kickstand, front suspension, gear-shift lever, footbrake lever, and drive chain. Materials used include diecast and plastic. The models range in size from 1:10 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. All models come fully assembled and ready for display in the home or office. Most include a certificate of authenticity.                                                                                                                                             |
+| S32_1374    | 1997 BMW F650 ST                        |    66.92 | Our motorcycles are state of the art replicas of classic as well as contemporary motorcycle legends such as Harley Davidson, Ducati and Vespa. Models contain stunning details such as official logos, rotating wheels, working kickstand, front suspension, gear-shift lever, footbrake lever, and drive chain. Materials used include diecast and plastic. The models range in size from 1:10 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. All models come fully assembled and ready for display in the home or office. Most include a certificate of authenticity.                                                                                                                                             |
+| S18_1662    | 1980s Black Hawk Helicopter             |    77.27 | Unique, diecast airplane and helicopter replicas suitable for collections, as well as home, office or classroom decorations. Models contain stunning details such as official logos and insignias, rotating jet engines and propellers, retractable wheels, and so on. Most come fully assembled and with a certificate of authenticity from their manufacturers.                                                                                                                                                                                                                                                                                                                                                                                               |
+| S24_1785    | 1928 British Royal Navy Airplane        |    66.74 | Unique, diecast airplane and helicopter replicas suitable for collections, as well as home, office or classroom decorations. Models contain stunning details such as official logos and insignias, rotating jet engines and propellers, retractable wheels, and so on. Most come fully assembled and with a certificate of authenticity from their manufacturers.                                                                                                                                                                                                                                                                                                                                                                                               |
+| S700_2466   | America West Airlines B757-200          |    68.80 | Unique, diecast airplane and helicopter replicas suitable for collections, as well as home, office or classroom decorations. Models contain stunning details such as official logos and insignias, rotating jet engines and propellers, retractable wheels, and so on. Most come fully assembled and with a certificate of authenticity from their manufacturers.                                                                                                                                                                                                                                                                                                                                                                                               |
+| S700_2834   | ATA: B757-300                           |    59.33 | Unique, diecast airplane and helicopter replicas suitable for collections, as well as home, office or classroom decorations. Models contain stunning details such as official logos and insignias, rotating jet engines and propellers, retractable wheels, and so on. Most come fully assembled and with a certificate of authenticity from their manufacturers.                                                                                                                                                                                                                                                                                                                                                                                               |
+| S24_2011    | 18th century schooner                   |    82.34 | The perfect holiday or anniversary gift for executives, clients, friends, and family. These handcrafted model ships are unique, stunning works of art that will be treasured for generations! They come fully assembled and ready for display in the home or office. We guarantee the highest quality, and best value.                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| S18_3259    | Collectable Wooden Train                |    67.56 | Model trains are a rewarding hobby for enthusiasts of all ages. Whether you're looking for collectible wooden trains, electric streetcars or locomotives, you'll find a number of great choices for any budget within this category. The interactive aspect of trains makes toy trains perfect for young children. The wooden train sets are ideal for children under the age of 5.                                                                                                                                                                                                                                                                                                                                                                             |
+| S12_1666    | 1958 Setra Bus                          |    77.90 | The Truck and Bus models are realistic replicas of buses and specialized trucks produced from the early 1920s to present. The models range in size from 1:12 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. Materials used include tin, diecast and plastic. All models include a certificate of authenticity from their manufacturers and are a perfect ornament for the home and office.                                                                                                                                                                                                                                                                                                                          |
+| S18_1097    | 1940 Ford Pickup Truck                  |    58.33 | The Truck and Bus models are realistic replicas of buses and specialized trucks produced from the early 1920s to present. The models range in size from 1:12 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. Materials used include tin, diecast and plastic. All models include a certificate of authenticity from their manufacturers and are a perfect ornament for the home and office.                                                                                                                                                                                                                                                                                                                          |
+| S18_2319    | 1964 Mercedes Tour Bus                  |    74.86 | The Truck and Bus models are realistic replicas of buses and specialized trucks produced from the early 1920s to present. The models range in size from 1:12 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. Materials used include tin, diecast and plastic. All models include a certificate of authenticity from their manufacturers and are a perfect ornament for the home and office.                                                                                                                                                                                                                                                                                                                          |
+| S18_4600    | 1940s Ford truck                        |    84.76 | The Truck and Bus models are realistic replicas of buses and specialized trucks produced from the early 1920s to present. The models range in size from 1:12 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. Materials used include tin, diecast and plastic. All models include a certificate of authenticity from their manufacturers and are a perfect ornament for the home and office.                                                                                                                                                                                                                                                                                                                          |
+| S24_2300    | 1962 Volkswagen Microbus                |    61.34 | The Truck and Bus models are realistic replicas of buses and specialized trucks produced from the early 1920s to present. The models range in size from 1:12 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. Materials used include tin, diecast and plastic. All models include a certificate of authenticity from their manufacturers and are a perfect ornament for the home and office.                                                                                                                                                                                                                                                                                                                          |
+| S50_1392    | Diamond T620 Semi-Skirted Tanker        |    68.29 | The Truck and Bus models are realistic replicas of buses and specialized trucks produced from the early 1920s to present. The models range in size from 1:12 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. Materials used include tin, diecast and plastic. All models include a certificate of authenticity from their manufacturers and are a perfect ornament for the home and office.                                                                                                                                                                                                                                                                                                                          |
+| S18_1342    | 1937 Lincoln Berline                    |    60.62 | Our Vintage Car models realistically portray automobiles produced from the early 1900s through the 1940s. Materials used include Bakelite, diecast, plastic and wood. Most of the replicas are in the 1:18 and 1:24 scale sizes, which provide the optimum in detail and accuracy. Prices range from $30.00 up to $180.00 for some special limited edition replicas. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office.                                                                                                                                                                                                                                            |
+| S18_1749    | 1917 Grand Touring Sedan                |    86.70 | Our Vintage Car models realistically portray automobiles produced from the early 1900s through the 1940s. Materials used include Bakelite, diecast, plastic and wood. Most of the replicas are in the 1:18 and 1:24 scale sizes, which provide the optimum in detail and accuracy. Prices range from $30.00 up to $180.00 for some special limited edition replicas. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office.                                                                                                                                                                                                                                            |
+| S18_2325    | 1932 Model A Ford J-Coupe               |    58.48 | Our Vintage Car models realistically portray automobiles produced from the early 1900s through the 1940s. Materials used include Bakelite, diecast, plastic and wood. Most of the replicas are in the 1:18 and 1:24 scale sizes, which provide the optimum in detail and accuracy. Prices range from $30.00 up to $180.00 for some special limited edition replicas. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office.                                                                                                                                                                                                                                            |
+| S18_2795    | 1928 Mercedes-Benz SSK                  |    72.56 | Our Vintage Car models realistically portray automobiles produced from the early 1900s through the 1940s. Materials used include Bakelite, diecast, plastic and wood. Most of the replicas are in the 1:18 and 1:24 scale sizes, which provide the optimum in detail and accuracy. Prices range from $30.00 up to $180.00 for some special limited edition replicas. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office.                                                                                                                                                                                                                                            |
+| S18_2949    | 1913 Ford Model T Speedster             |    60.78 | Our Vintage Car models realistically portray automobiles produced from the early 1900s through the 1940s. Materials used include Bakelite, diecast, plastic and wood. Most of the replicas are in the 1:18 and 1:24 scale sizes, which provide the optimum in detail and accuracy. Prices range from $30.00 up to $180.00 for some special limited edition replicas. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office.                                                                                                                                                                                                                                            |
+| S18_3136    | 18th Century Vintage Horse Carriage     |    60.74 | Our Vintage Car models realistically portray automobiles produced from the early 1900s through the 1940s. Materials used include Bakelite, diecast, plastic and wood. Most of the replicas are in the 1:18 and 1:24 scale sizes, which provide the optimum in detail and accuracy. Prices range from $30.00 up to $180.00 for some special limited edition replicas. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office.                                                                                                                                                                                                                                            |
+| S18_3140    | 1903 Ford Model A                       |    68.30 | Our Vintage Car models realistically portray automobiles produced from the early 1900s through the 1940s. Materials used include Bakelite, diecast, plastic and wood. Most of the replicas are in the 1:18 and 1:24 scale sizes, which provide the optimum in detail and accuracy. Prices range from $30.00 up to $180.00 for some special limited edition replicas. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office.                                                                                                                                                                                                                                            |
+| S18_3320    | 1917 Maxwell Touring Car                |    57.54 | Our Vintage Car models realistically portray automobiles produced from the early 1900s through the 1940s. Materials used include Bakelite, diecast, plastic and wood. Most of the replicas are in the 1:18 and 1:24 scale sizes, which provide the optimum in detail and accuracy. Prices range from $30.00 up to $180.00 for some special limited edition replicas. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office.                                                                                                                                                                                                                                            |
+| S18_3856    | 1941 Chevrolet Special Deluxe Cabriolet |    64.58 | Our Vintage Car models realistically portray automobiles produced from the early 1900s through the 1940s. Materials used include Bakelite, diecast, plastic and wood. Most of the replicas are in the 1:18 and 1:24 scale sizes, which provide the optimum in detail and accuracy. Prices range from $30.00 up to $180.00 for some special limited edition replicas. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office.                                                                                                                                                                                                                                            |
+| S24_4258    | 1936 Chrysler Airflow                   |    57.46 | Our Vintage Car models realistically portray automobiles produced from the early 1900s through the 1940s. Materials used include Bakelite, diecast, plastic and wood. Most of the replicas are in the 1:18 and 1:24 scale sizes, which provide the optimum in detail and accuracy. Prices range from $30.00 up to $180.00 for some special limited edition replicas. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office.                                                                                                                                                                                                                                            |
++-------------+-----------------------------------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+45 rows in set (0.01 sec)
+
+mysql> SELECT productCode, productName,buyprice, quantityInStock, productVendor, productLine
+    -> from products
+    -> where productLine = 'Classic Cars' OR productVendor = 'Min Lin Diecast';
++-------------+---------------------------------------+----------+-----------------+---------------------------+--------------+
+| productCode | productName                           | buyprice | quantityInStock | productVendor             | productLine  |
++-------------+---------------------------------------+----------+-----------------+---------------------------+--------------+
+| S10_1678    | 1969 Harley Davidson Ultimate Chopper |    48.81 |            7933 | Min Lin Diecast           | Motorcycles  |
+| S10_1949    | 1952 Alpine Renault 1300              |    98.58 |            7305 | Classic Metal Creations   | Classic Cars |
+| S10_4757    | 1972 Alfa Romeo GTA                   |    85.68 |            3252 | Motor City Art Classics   | Classic Cars |
+| S10_4962    | 1962 LanciaA Delta 16V                |   103.42 |            6791 | Second Gear Diecast       | Classic Cars |
+| S12_1099    | 1968 Ford Mustang                     |    95.34 |              68 | Autoart Studio Design     | Classic Cars |
+| S12_1108    | 2001 Ferrari Enzo                     |    95.59 |            3619 | Second Gear Diecast       | Classic Cars |
+| S12_3148    | 1969 Corvair Monza                    |    89.14 |            6906 | Welly Diecast Productions | Classic Cars |
+| S12_3380    | 1968 Dodge Charger                    |    75.16 |            9123 | Welly Diecast Productions | Classic Cars |
+| S12_3891    | 1969 Ford Falcon                      |    83.05 |            1049 | Second Gear Diecast       | Classic Cars |
+| S12_3990    | 1970 Plymouth Hemi Cuda               |    31.92 |            5663 | Studio M Art Models       | Classic Cars |
+| S12_4675    | 1969 Dodge Charger                    |    58.73 |            7323 | Welly Diecast Productions | Classic Cars |
+| S18_1129    | 1993 Mazda RX-7                       |    83.51 |            3975 | Highway 66 Mini Classics  | Classic Cars |
+| S18_1589    | 1965 Aston Martin DB5                 |    65.96 |            9042 | Classic Metal Creations   | Classic Cars |
+| S18_1889    | 1948 Porsche 356-A Roadster           |    53.90 |            8826 | Gearbox Collectibles      | Classic Cars |
+| S18_1984    | 1995 Honda Civic                      |    93.89 |            9772 | Min Lin Diecast           | Classic Cars |
+| S18_2238    | 1998 Chrysler Plymouth Prowler        |   101.51 |            4724 | Gearbox Collectibles      | Classic Cars |
+| S18_2870    | 1999 Indy 500 Monte Carlo SS          |    56.76 |            8164 | Red Start Diecast         | Classic Cars |
+| S18_2957    | 1934 Ford V8 Coupe                    |    34.35 |            5649 | Min Lin Diecast           | Vintage Cars |
+| S18_3029    | 1999 Yamaha Speed Boat                |    51.61 |            4259 | Min Lin Diecast           | Ships        |
+| S18_3232    | 1992 Ferrari 360 Spider red           |    77.90 |            8347 | Unimax Art Galleries      | Classic Cars |
+| S18_3233    | 1985 Toyota Supra                     |    57.01 |            7733 | Highway 66 Mini Classics  | Classic Cars |
+| S18_3278    | 1969 Dodge Super Bee                  |    49.05 |            1917 | Min Lin Diecast           | Classic Cars |
+| S18_3482    | 1976 Ford Gran Torino                 |    73.49 |            9127 | Gearbox Collectibles      | Classic Cars |
+| S18_3685    | 1948 Porsche Type 356 Roadster        |    62.16 |            8990 | Gearbox Collectibles      | Classic Cars |
+| S18_4027    | 1970 Triumph Spitfire                 |    91.92 |            5545 | Min Lin Diecast           | Classic Cars |
+| S18_4721    | 1957 Corvette Convertible             |    69.93 |            1249 | Classic Metal Creations   | Classic Cars |
+| S18_4933    | 1957 Ford Thunderbird                 |    34.21 |            3209 | Studio M Art Models       | Classic Cars |
+| S24_1046    | 1970 Chevy Chevelle SS 454            |    49.24 |            1005 | Unimax Art Galleries      | Classic Cars |
+| S24_1444    | 1970 Dodge Coronet                    |    32.37 |            4074 | Highway 66 Mini Classics  | Classic Cars |
+| S24_1628    | 1966 Shelby Cobra 427 S/C             |    29.18 |            8197 | Carousel DieCast Legends  | Classic Cars |
+| S24_2766    | 1949 Jaguar XK 120                    |    47.25 |            2350 | Classic Metal Creations   | Classic Cars |
+| S24_2840    | 1958 Chevy Corvette Limited Edition   |    15.91 |            2542 | Carousel DieCast Legends  | Classic Cars |
+| S24_2887    | 1952 Citroen-15CV                     |    72.82 |            1452 | Exoto Designs             | Classic Cars |
+| S24_2972    | 1982 Lamborghini Diablo               |    16.24 |            7723 | Second Gear Diecast       | Classic Cars |
+| S24_3151    | 1912 Ford Model T Delivery Wagon      |    46.91 |            9173 | Min Lin Diecast           | Vintage Cars |
+| S24_3191    | 1969 Chevrolet Camaro Z28             |    50.51 |            4695 | Exoto Designs             | Classic Cars |
+| S24_3371    | 1971 Alpine Renault 1600s             |    38.58 |            7995 | Welly Diecast Productions | Classic Cars |
+| S24_3432    | 2002 Chevy Corvette                   |    62.11 |            9446 | Gearbox Collectibles      | Classic Cars |
+| S24_3856    | 1956 Porsche 356A Coupe               |    98.30 |            6600 | Classic Metal Creations   | Classic Cars |
+| S24_4048    | 1992 Porsche Cayenne Turbo Silver     |    69.78 |            6582 | Exoto Designs             | Classic Cars |
+| S24_4620    | 1961 Chevrolet Impala                 |    32.33 |            7869 | Classic Metal Creations   | Classic Cars |
+| S700_1691   | American Airlines: B767-300           |    51.15 |            5841 | Min Lin Diecast           | Planes       |
+| S700_2824   | 1982 Camaro Z28                       |    46.53 |            6934 | Carousel DieCast Legends  | Classic Cars |
++-------------+---------------------------------------+----------+-----------------+---------------------------+--------------+
+43 rows in set (0.00 sec)
+
+mysql> describe products;
++--------------------+---------------+------+-----+---------+-------+
+| Field              | Type          | Null | Key | Default | Extra |
++--------------------+---------------+------+-----+---------+-------+
+| productCode        | varchar(15)   | NO   | PRI | NULL    |       |
+| productName        | varchar(70)   | NO   |     | NULL    |       |
+| productLine        | varchar(50)   | NO   | MUL | NULL    |       |
+| productScale       | varchar(10)   | NO   |     | NULL    |       |
+| productVendor      | varchar(50)   | NO   |     | NULL    |       |
+| productDescription | text          | NO   |     | NULL    |       |
+| quantityInStock    | smallint      | NO   |     | NULL    |       |
+| buyPrice           | decimal(10,2) | NO   |     | NULL    |       |
+| MSRP               | decimal(10,2) | NO   |     | NULL    |       |
++--------------------+---------------+------+-----+---------+-------+
+9 rows in set (0.00 sec)
+
+mysql> select distinct productName from products;
++---------------------------------------------+
+| productName                                 |
++---------------------------------------------+
+| 1969 Harley Davidson Ultimate Chopper       |
+| 1952 Alpine Renault 1300                    |
+| 1996 Moto Guzzi 1100i                       |
+| 2003 Harley-Davidson Eagle Drag Bike        |
+| 1972 Alfa Romeo GTA                         |
+| 1962 LanciaA Delta 16V                      |
+| 1968 Ford Mustang                           |
+| 2001 Ferrari Enzo                           |
+| 1958 Setra Bus                              |
+| 2002 Suzuki XREO                            |
+| 1969 Corvair Monza                          |
+| 1968 Dodge Charger                          |
+| 1969 Ford Falcon                            |
+| 1970 Plymouth Hemi Cuda                     |
+| 1957 Chevy Pickup                           |
+| 1969 Dodge Charger                          |
+| 1940 Ford Pickup Truck                      |
+| 1993 Mazda RX-7                             |
+| 1937 Lincoln Berline                        |
+| 1936 Mercedes-Benz 500K Special Roadster    |
+| 1965 Aston Martin DB5                       |
+| 1980s Black Hawk Helicopter                 |
+| 1917 Grand Touring Sedan                    |
+| 1948 Porsche 356-A Roadster                 |
+| 1995 Honda Civic                            |
+| 1998 Chrysler Plymouth Prowler              |
+| 1911 Ford Town Car                          |
+| 1964 Mercedes Tour Bus                      |
+| 1932 Model A Ford J-Coupe                   |
+| 1926 Ford Fire Engine                       |
+| P-51-D Mustang                              |
+| 1936 Harley Davidson El Knucklehead         |
+| 1928 Mercedes-Benz SSK                      |
+| 1999 Indy 500 Monte Carlo SS                |
+| 1913 Ford Model T Speedster                 |
+| 1934 Ford V8 Coupe                          |
+| 1999 Yamaha Speed Boat                      |
+| 18th Century Vintage Horse Carriage         |
+| 1903 Ford Model A                           |
+| 1992 Ferrari 360 Spider red                 |
+| 1985 Toyota Supra                           |
+| Collectable Wooden Train                    |
+| 1969 Dodge Super Bee                        |
+| 1917 Maxwell Touring Car                    |
+| 1976 Ford Gran Torino                       |
+| 1948 Porsche Type 356 Roadster              |
+| 1957 Vespa GS150                            |
+| 1941 Chevrolet Special Deluxe Cabriolet     |
+| 1970 Triumph Spitfire                       |
+| 1932 Alfa Romeo 8C2300 Spider Sport         |
+| 1904 Buick Runabout                         |
+| 1940s Ford truck                            |
+| 1939 Cadillac Limousine                     |
+| 1957 Corvette Convertible                   |
+| 1957 Ford Thunderbird                       |
+| 1970 Chevy Chevelle SS 454                  |
+| 1970 Dodge Coronet                          |
+| 1997 BMW R 1100 S                           |
+| 1966 Shelby Cobra 427 S/C                   |
+| 1928 British Royal Navy Airplane            |
+| 1939 Chevrolet Deluxe Coupe                 |
+| 1960 BSA Gold Star DBD34                    |
+| 18th century schooner                       |
+| 1938 Cadillac V-16 Presidential Limousine   |
+| 1962 Volkswagen Microbus                    |
+| 1982 Ducati 900 Monster                     |
+| 1949 Jaguar XK 120                          |
+| 1958 Chevy Corvette Limited Edition         |
+| 1900s Vintage Bi-Plane                      |
+| 1952 Citroen-15CV                           |
+| 1982 Lamborghini Diablo                     |
+| 1912 Ford Model T Delivery Wagon            |
+| 1969 Chevrolet Camaro Z28                   |
+| 1971 Alpine Renault 1600s                   |
+| 1937 Horch 930V Limousine                   |
+| 2002 Chevy Corvette                         |
+| 1940 Ford Delivery Sedan                    |
+| 1956 Porsche 356A Coupe                     |
+| Corsair F4U ( Bird Cage)                    |
+| 1936 Mercedes Benz 500k Roadster            |
+| 1992 Porsche Cayenne Turbo Silver           |
+| 1936 Chrysler Airflow                       |
+| 1900s Vintage Tri-Plane                     |
+| 1961 Chevrolet Impala                       |
+| 1980?s GM Manhattan Express                 |
+| 1997 BMW F650 ST                            |
+| 1982 Ducati 996 R                           |
+| 1954 Greyhound Scenicruiser                 |
+| 1950's Chicago Surface Lines Streetcar      |
+| 1996 Peterbilt 379 Stake Bed with Outrigger |
+| 1928 Ford Phaeton Deluxe                    |
+| 1974 Ducati 350 Mk3 Desmo                   |
+| 1930 Buick Marquette Phaeton                |
+| Diamond T620 Semi-Skirted Tanker            |
+| 1962 City of Detroit Streetcar              |
+| 2002 Yamaha YZR M1                          |
+| The Schooner Bluenose                       |
+| American Airlines: B767-300                 |
+| The Mayflower                               |
+| HMS Bounty                                  |
+| America West Airlines B757-200              |
+| The USS Constitution Ship                   |
+| 1982 Camaro Z28                             |
+| ATA: B757-300                               |
+| F/A 18 Hornet 1/72                          |
+| The Titanic                                 |
+| The Queen Mary                              |
+| American Airlines: MD-11S                   |
+| Boeing X-32A JSF                            |
+| Pont Yacht                                  |
++---------------------------------------------+
+110 rows in set (0.00 sec)
+
+mysql> select distinct productLine form products;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'products' at line 1
+mysql> select distinct productline from products;
++------------------+
+| productline      |
++------------------+
+| Classic Cars     |
+| Motorcycles      |
+| Planes           |
+| Ships            |
+| Trains           |
+| Trucks and Buses |
+| Vintage Cars     |
++------------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT DISTINCT COUNT(productName)
+    -> from products;
++--------------------+
+| COUNT(productName) |
++--------------------+
+|                110 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT productName, NOW() AS perDate
+    -> FROM products
+    -> WHERE buyprice >56 AND buyprice <68;
++-----------------------------------------+---------------------+
+| productName                             | perDate             |
++-----------------------------------------+---------------------+
+| 2002 Suzuki XREO                        | 2020-05-22 09:15:05 |
+| 1969 Dodge Charger                      | 2020-05-22 09:15:05 |
+| 1940 Ford Pickup Truck                  | 2020-05-22 09:15:05 |
+| 1937 Lincoln Berline                    | 2020-05-22 09:15:05 |
+| 1965 Aston Martin DB5                   | 2020-05-22 09:15:05 |
+| 1932 Model A Ford J-Coupe               | 2020-05-22 09:15:05 |
+| 1999 Indy 500 Monte Carlo SS            | 2020-05-22 09:15:05 |
+| 1913 Ford Model T Speedster             | 2020-05-22 09:15:05 |
+| 18th Century Vintage Horse Carriage     | 2020-05-22 09:15:05 |
+| 1985 Toyota Supra                       | 2020-05-22 09:15:05 |
+| Collectable Wooden Train                | 2020-05-22 09:15:05 |
+| 1917 Maxwell Touring Car                | 2020-05-22 09:15:05 |
+| 1948 Porsche Type 356 Roadster          | 2020-05-22 09:15:05 |
+| 1941 Chevrolet Special Deluxe Cabriolet | 2020-05-22 09:15:05 |
+| 1997 BMW R 1100 S                       | 2020-05-22 09:15:05 |
+| 1928 British Royal Navy Airplane        | 2020-05-22 09:15:05 |
+| 1962 Volkswagen Microbus                | 2020-05-22 09:15:05 |
+| 2002 Chevy Corvette                     | 2020-05-22 09:15:05 |
+| 1936 Chrysler Airflow                   | 2020-05-22 09:15:05 |
+| 1997 BMW F650 ST                        | 2020-05-22 09:15:05 |
+| 1974 Ducati 350 Mk3 Desmo               | 2020-05-22 09:15:05 |
+| ATA: B757-300                           | 2020-05-22 09:15:05 |
++-----------------------------------------+---------------------+
+22 rows in set (0.00 sec)
+
+mysql> SELECT productName, NOW() AS perDate
+    -> describe products;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'describe products' at line 2
+mysql> SELECT productName, buyprice, NOW() AS perDate
+    -> from products
+    -> where productName like '19%';
++---------------------------------------------+----------+---------------------+
+| productName                                 | buyprice | perDate             |
++---------------------------------------------+----------+---------------------+
+| 1969 Harley Davidson Ultimate Chopper       |    48.81 | 2020-05-22 09:16:53 |
+| 1952 Alpine Renault 1300                    |    98.58 | 2020-05-22 09:16:53 |
+| 1996 Moto Guzzi 1100i                       |    68.99 | 2020-05-22 09:16:53 |
+| 1972 Alfa Romeo GTA                         |    85.68 | 2020-05-22 09:16:53 |
+| 1962 LanciaA Delta 16V                      |   103.42 | 2020-05-22 09:16:53 |
+| 1968 Ford Mustang                           |    95.34 | 2020-05-22 09:16:53 |
+| 1958 Setra Bus                              |    77.90 | 2020-05-22 09:16:53 |
+| 1969 Corvair Monza                          |    89.14 | 2020-05-22 09:16:53 |
+| 1968 Dodge Charger                          |    75.16 | 2020-05-22 09:16:53 |
+| 1969 Ford Falcon                            |    83.05 | 2020-05-22 09:16:53 |
+| 1970 Plymouth Hemi Cuda                     |    31.92 | 2020-05-22 09:16:53 |
+| 1957 Chevy Pickup                           |    55.70 | 2020-05-22 09:16:53 |
+| 1969 Dodge Charger                          |    58.73 | 2020-05-22 09:16:53 |
+| 1940 Ford Pickup Truck                      |    58.33 | 2020-05-22 09:16:53 |
+| 1993 Mazda RX-7                             |    83.51 | 2020-05-22 09:16:53 |
+| 1937 Lincoln Berline                        |    60.62 | 2020-05-22 09:16:53 |
+| 1936 Mercedes-Benz 500K Special Roadster    |    24.26 | 2020-05-22 09:16:53 |
+| 1965 Aston Martin DB5                       |    65.96 | 2020-05-22 09:16:53 |
+| 1980s Black Hawk Helicopter                 |    77.27 | 2020-05-22 09:16:53 |
+| 1917 Grand Touring Sedan                    |    86.70 | 2020-05-22 09:16:53 |
+| 1948 Porsche 356-A Roadster                 |    53.90 | 2020-05-22 09:16:53 |
+| 1995 Honda Civic                            |    93.89 | 2020-05-22 09:16:53 |
+| 1998 Chrysler Plymouth Prowler              |   101.51 | 2020-05-22 09:16:53 |
+| 1911 Ford Town Car                          |    33.30 | 2020-05-22 09:16:53 |
+| 1964 Mercedes Tour Bus                      |    74.86 | 2020-05-22 09:16:53 |
+| 1932 Model A Ford J-Coupe                   |    58.48 | 2020-05-22 09:16:53 |
+| 1926 Ford Fire Engine                       |    24.92 | 2020-05-22 09:16:53 |
+| 1936 Harley Davidson El Knucklehead         |    24.23 | 2020-05-22 09:16:53 |
+| 1928 Mercedes-Benz SSK                      |    72.56 | 2020-05-22 09:16:53 |
+| 1999 Indy 500 Monte Carlo SS                |    56.76 | 2020-05-22 09:16:53 |
+| 1913 Ford Model T Speedster                 |    60.78 | 2020-05-22 09:16:53 |
+| 1934 Ford V8 Coupe                          |    34.35 | 2020-05-22 09:16:53 |
+| 1999 Yamaha Speed Boat                      |    51.61 | 2020-05-22 09:16:53 |
+| 1903 Ford Model A                           |    68.30 | 2020-05-22 09:16:53 |
+| 1992 Ferrari 360 Spider red                 |    77.90 | 2020-05-22 09:16:53 |
+| 1985 Toyota Supra                           |    57.01 | 2020-05-22 09:16:53 |
+| 1969 Dodge Super Bee                        |    49.05 | 2020-05-22 09:16:53 |
+| 1917 Maxwell Touring Car                    |    57.54 | 2020-05-22 09:16:53 |
+| 1976 Ford Gran Torino                       |    73.49 | 2020-05-22 09:16:53 |
+| 1948 Porsche Type 356 Roadster              |    62.16 | 2020-05-22 09:16:53 |
+| 1957 Vespa GS150                            |    32.95 | 2020-05-22 09:16:53 |
+| 1941 Chevrolet Special Deluxe Cabriolet     |    64.58 | 2020-05-22 09:16:53 |
+| 1970 Triumph Spitfire                       |    91.92 | 2020-05-22 09:16:53 |
+| 1932 Alfa Romeo 8C2300 Spider Sport         |    43.26 | 2020-05-22 09:16:53 |
+| 1904 Buick Runabout                         |    52.66 | 2020-05-22 09:16:53 |
+| 1940s Ford truck                            |    84.76 | 2020-05-22 09:16:53 |
+| 1939 Cadillac Limousine                     |    23.14 | 2020-05-22 09:16:53 |
+| 1957 Corvette Convertible                   |    69.93 | 2020-05-22 09:16:53 |
+| 1957 Ford Thunderbird                       |    34.21 | 2020-05-22 09:16:53 |
+| 1970 Chevy Chevelle SS 454                  |    49.24 | 2020-05-22 09:16:53 |
+| 1970 Dodge Coronet                          |    32.37 | 2020-05-22 09:16:53 |
+| 1997 BMW R 1100 S                           |    60.86 | 2020-05-22 09:16:53 |
+| 1966 Shelby Cobra 427 S/C                   |    29.18 | 2020-05-22 09:16:53 |
+| 1928 British Royal Navy Airplane            |    66.74 | 2020-05-22 09:16:53 |
+| 1939 Chevrolet Deluxe Coupe                 |    22.57 | 2020-05-22 09:16:53 |
+| 1960 BSA Gold Star DBD34                    |    37.32 | 2020-05-22 09:16:53 |
+| 1938 Cadillac V-16 Presidential Limousine   |    20.61 | 2020-05-22 09:16:53 |
+| 1962 Volkswagen Microbus                    |    61.34 | 2020-05-22 09:16:53 |
+| 1982 Ducati 900 Monster                     |    47.10 | 2020-05-22 09:16:53 |
+| 1949 Jaguar XK 120                          |    47.25 | 2020-05-22 09:16:53 |
+| 1958 Chevy Corvette Limited Edition         |    15.91 | 2020-05-22 09:16:53 |
+| 1900s Vintage Bi-Plane                      |    34.25 | 2020-05-22 09:16:53 |
+| 1952 Citroen-15CV                           |    72.82 | 2020-05-22 09:16:53 |
+| 1982 Lamborghini Diablo                     |    16.24 | 2020-05-22 09:16:53 |
+| 1912 Ford Model T Delivery Wagon            |    46.91 | 2020-05-22 09:16:53 |
+| 1969 Chevrolet Camaro Z28                   |    50.51 | 2020-05-22 09:16:53 |
+| 1971 Alpine Renault 1600s                   |    38.58 | 2020-05-22 09:16:53 |
+| 1937 Horch 930V Limousine                   |    26.30 | 2020-05-22 09:16:53 |
+| 1940 Ford Delivery Sedan                    |    48.64 | 2020-05-22 09:16:53 |
+| 1956 Porsche 356A Coupe                     |    98.30 | 2020-05-22 09:16:53 |
+| 1936 Mercedes Benz 500k Roadster            |    21.75 | 2020-05-22 09:16:53 |
+| 1992 Porsche Cayenne Turbo Silver           |    69.78 | 2020-05-22 09:16:53 |
+| 1936 Chrysler Airflow                       |    57.46 | 2020-05-22 09:16:53 |
+| 1900s Vintage Tri-Plane                     |    36.23 | 2020-05-22 09:16:53 |
+| 1961 Chevrolet Impala                       |    32.33 | 2020-05-22 09:16:53 |
+| 1980?s GM Manhattan Express                 |    53.93 | 2020-05-22 09:16:53 |
+| 1997 BMW F650 ST                            |    66.92 | 2020-05-22 09:16:53 |
+| 1982 Ducati 996 R                           |    24.14 | 2020-05-22 09:16:53 |
+| 1954 Greyhound Scenicruiser                 |    25.98 | 2020-05-22 09:16:53 |
+| 1950's Chicago Surface Lines Streetcar      |    26.72 | 2020-05-22 09:16:53 |
+| 1996 Peterbilt 379 Stake Bed with Outrigger |    33.61 | 2020-05-22 09:16:53 |
+| 1928 Ford Phaeton Deluxe                    |    33.02 | 2020-05-22 09:16:53 |
+| 1974 Ducati 350 Mk3 Desmo                   |    56.13 | 2020-05-22 09:16:53 |
+| 1930 Buick Marquette Phaeton                |    27.06 | 2020-05-22 09:16:53 |
+| 1962 City of Detroit Streetcar              |    37.49 | 2020-05-22 09:16:53 |
+| 1982 Camaro Z28                             |    46.53 | 2020-05-22 09:16:53 |
++---------------------------------------------+----------+---------------------+
+86 rows in set (0.00 sec)
+
+mysql> SELECT productCode, productName, productVendor, buyprice
+    -> FROM products
+    -> WHERE buyprice <56 OR buyprice >70
+    -> ORDER BY productName DESC;
++-------------+---------------------------------------------+---------------------------+----------+
+| productCode | productName                                 | productVendor             | buyprice |
++-------------+---------------------------------------------+---------------------------+----------+
+| S700_2610   | The USS Constitution Ship                   | Red Start Diecast         |    33.97 |
+| S700_3505   | The Titanic                                 | Carousel DieCast Legends  |    51.09 |
+| S700_1138   | The Schooner Bluenose                       | Autoart Studio Design     |    34.00 |
+| S700_3962   | The Queen Mary                              | Welly Diecast Productions |    53.63 |
+| S700_1938   | The Mayflower                               | Studio M Art Models       |    43.30 |
+| S72_3212    | Pont Yacht                                  | Unimax Art Galleries      |    33.30 |
+| S18_2581    | P-51-D Mustang                              | Gearbox Collectibles      |    49.00 |
+| S700_2047   | HMS Bounty                                  | Unimax Art Galleries      |    39.83 |
+| S700_3167   | F/A 18 Hornet 1/72                          | Motor City Art Classics   |    54.40 |
+| S24_3949    | Corsair F4U ( Bird Cage)                    | Second Gear Diecast       |    29.34 |
+| S72_1253    | Boeing X-32A JSF                            | Motor City Art Classics   |    32.77 |
+| S700_4002   | American Airlines: MD-11S                   | Second Gear Diecast       |    36.27 |
+| S700_1691   | American Airlines: B767-300                 | Min Lin Diecast           |    51.15 |
+| S10_4698    | 2003 Harley-Davidson Eagle Drag Bike        | Red Start Diecast         |    91.02 |
+| S50_4713    | 2002 Yamaha YZR M1                          | Autoart Studio Design     |    34.17 |
+| S12_1108    | 2001 Ferrari Enzo                           | Second Gear Diecast       |    95.59 |
+| S18_3029    | 1999 Yamaha Speed Boat                      | Min Lin Diecast           |    51.61 |
+| S18_2238    | 1998 Chrysler Plymouth Prowler              | Gearbox Collectibles      |   101.51 |
+| S32_3522    | 1996 Peterbilt 379 Stake Bed with Outrigger | Red Start Diecast         |    33.61 |
+| S18_1984    | 1995 Honda Civic                            | Min Lin Diecast           |    93.89 |
+| S18_1129    | 1993 Mazda RX-7                             | Highway 66 Mini Classics  |    83.51 |
+| S18_3232    | 1992 Ferrari 360 Spider red                 | Unimax Art Galleries      |    77.90 |
+| S24_2972    | 1982 Lamborghini Diablo                     | Second Gear Diecast       |    16.24 |
+| S32_2206    | 1982 Ducati 996 R                           | Gearbox Collectibles      |    24.14 |
+| S24_2360    | 1982 Ducati 900 Monster                     | Highway 66 Mini Classics  |    47.10 |
+| S700_2824   | 1982 Camaro Z28                             | Carousel DieCast Legends  |    46.53 |
+| S32_1268    | 1980?s GM Manhattan Express                 | Motor City Art Classics   |    53.93 |
+| S18_1662    | 1980s Black Hawk Helicopter                 | Red Start Diecast         |    77.27 |
+| S18_3482    | 1976 Ford Gran Torino                       | Gearbox Collectibles      |    73.49 |
+| S10_4757    | 1972 Alfa Romeo GTA                         | Motor City Art Classics   |    85.68 |
+| S24_3371    | 1971 Alpine Renault 1600s                   | Welly Diecast Productions |    38.58 |
+| S18_4027    | 1970 Triumph Spitfire                       | Min Lin Diecast           |    91.92 |
+| S12_3990    | 1970 Plymouth Hemi Cuda                     | Studio M Art Models       |    31.92 |
+| S24_1444    | 1970 Dodge Coronet                          | Highway 66 Mini Classics  |    32.37 |
+| S24_1046    | 1970 Chevy Chevelle SS 454                  | Unimax Art Galleries      |    49.24 |
+| S10_1678    | 1969 Harley Davidson Ultimate Chopper       | Min Lin Diecast           |    48.81 |
+| S12_3891    | 1969 Ford Falcon                            | Second Gear Diecast       |    83.05 |
+| S18_3278    | 1969 Dodge Super Bee                        | Min Lin Diecast           |    49.05 |
+| S12_3148    | 1969 Corvair Monza                          | Welly Diecast Productions |    89.14 |
+| S24_3191    | 1969 Chevrolet Camaro Z28                   | Exoto Designs             |    50.51 |
+| S12_1099    | 1968 Ford Mustang                           | Autoart Studio Design     |    95.34 |
+| S12_3380    | 1968 Dodge Charger                          | Welly Diecast Productions |    75.16 |
+| S24_1628    | 1966 Shelby Cobra 427 S/C                   | Carousel DieCast Legends  |    29.18 |
+| S18_2319    | 1964 Mercedes Tour Bus                      | Unimax Art Galleries      |    74.86 |
+| S10_4962    | 1962 LanciaA Delta 16V                      | Second Gear Diecast       |   103.42 |
+| S50_1514    | 1962 City of Detroit Streetcar              | Classic Metal Creations   |    37.49 |
+| S24_4620    | 1961 Chevrolet Impala                       | Classic Metal Creations   |    32.33 |
+| S24_2000    | 1960 BSA Gold Star DBD34                    | Highway 66 Mini Classics  |    37.32 |
+| S12_1666    | 1958 Setra Bus                              | Welly Diecast Productions |    77.90 |
+| S24_2840    | 1958 Chevy Corvette Limited Edition         | Carousel DieCast Legends  |    15.91 |
+| S18_3782    | 1957 Vespa GS150                            | Studio M Art Models       |    32.95 |
+| S18_4933    | 1957 Ford Thunderbird                       | Studio M Art Models       |    34.21 |
+| S12_4473    | 1957 Chevy Pickup                           | Exoto Designs             |    55.70 |
+| S24_3856    | 1956 Porsche 356A Coupe                     | Classic Metal Creations   |    98.30 |
+| S32_2509    | 1954 Greyhound Scenicruiser                 | Classic Metal Creations   |    25.98 |
+| S24_2887    | 1952 Citroen-15CV                           | Exoto Designs             |    72.82 |
+| S10_1949    | 1952 Alpine Renault 1300                    | Classic Metal Creations   |    98.58 |
+| S32_3207    | 1950's Chicago Surface Lines Streetcar      | Gearbox Collectibles      |    26.72 |
+| S24_2766    | 1949 Jaguar XK 120                          | Classic Metal Creations   |    47.25 |
+| S18_1889    | 1948 Porsche 356-A Roadster                 | Gearbox Collectibles      |    53.90 |
+| S18_4600    | 1940s Ford truck                            | Motor City Art Classics   |    84.76 |
+| S24_3816    | 1940 Ford Delivery Sedan                    | Carousel DieCast Legends  |    48.64 |
+| S24_1937    | 1939 Chevrolet Deluxe Coupe                 | Motor City Art Classics   |    22.57 |
+| S18_4668    | 1939 Cadillac Limousine                     | Studio M Art Models       |    23.14 |
+| S24_2022    | 1938 Cadillac V-16 Presidential Limousine   | Classic Metal Creations   |    20.61 |
+| S24_3420    | 1937 Horch 930V Limousine                   | Autoart Studio Design     |    26.30 |
+| S18_1367    | 1936 Mercedes-Benz 500K Special Roadster    | Studio M Art Models       |    24.26 |
+| S24_3969    | 1936 Mercedes Benz 500k Roadster            | Red Start Diecast         |    21.75 |
+| S18_2625    | 1936 Harley Davidson El Knucklehead         | Welly Diecast Productions |    24.23 |
+| S18_2957    | 1934 Ford V8 Coupe                          | Min Lin Diecast           |    34.35 |
+| S18_4409    | 1932 Alfa Romeo 8C2300 Spider Sport         | Exoto Designs             |    43.26 |
+| S50_1341    | 1930 Buick Marquette Phaeton                | Studio M Art Models       |    27.06 |
+| S18_2795    | 1928 Mercedes-Benz SSK                      | Gearbox Collectibles      |    72.56 |
+| S32_4289    | 1928 Ford Phaeton Deluxe                    | Highway 66 Mini Classics  |    33.02 |
+| S18_2432    | 1926 Ford Fire Engine                       | Carousel DieCast Legends  |    24.92 |
+| S18_1749    | 1917 Grand Touring Sedan                    | Welly Diecast Productions |    86.70 |
+| S24_3151    | 1912 Ford Model T Delivery Wagon            | Min Lin Diecast           |    46.91 |
+| S18_2248    | 1911 Ford Town Car                          | Motor City Art Classics   |    33.30 |
+| S18_4522    | 1904 Buick Runabout                         | Exoto Designs             |    52.66 |
+| S24_4278    | 1900s Vintage Tri-Plane                     | Unimax Art Galleries      |    36.23 |
+| S24_2841    | 1900s Vintage Bi-Plane                      | Autoart Studio Design     |    34.25 |
+| S24_2011    | 18th century schooner                       | Carousel DieCast Legends  |    82.34 |
++-------------+---------------------------------------------+---------------------------+----------+
+82 rows in set (0.00 sec)
+
+mysql> SELECT productName, buyPrice, productVendor
+    -> FROM products
+    -> Where buyPrice >56 AND buyprice <80
+    -> ORDER BY buyprice, productName;
++-----------------------------------------+----------+---------------------------+
+| productName                             | buyPrice | productVendor             |
++-----------------------------------------+----------+---------------------------+
+| 1974 Ducati 350 Mk3 Desmo               |    56.13 | Second Gear Diecast       |
+| 1999 Indy 500 Monte Carlo SS            |    56.76 | Red Start Diecast         |
+| 1985 Toyota Supra                       |    57.01 | Highway 66 Mini Classics  |
+| 1936 Chrysler Airflow                   |    57.46 | Second Gear Diecast       |
+| 1917 Maxwell Touring Car                |    57.54 | Exoto Designs             |
+| 1940 Ford Pickup Truck                  |    58.33 | Studio M Art Models       |
+| 1932 Model A Ford J-Coupe               |    58.48 | Autoart Studio Design     |
+| 1969 Dodge Charger                      |    58.73 | Welly Diecast Productions |
+| ATA: B757-300                           |    59.33 | Highway 66 Mini Classics  |
+| 1937 Lincoln Berline                    |    60.62 | Motor City Art Classics   |
+| 18th Century Vintage Horse Carriage     |    60.74 | Red Start Diecast         |
+| 1913 Ford Model T Speedster             |    60.78 | Carousel DieCast Legends  |
+| 1997 BMW R 1100 S                       |    60.86 | Autoart Studio Design     |
+| 1962 Volkswagen Microbus                |    61.34 | Autoart Studio Design     |
+| 2002 Chevy Corvette                     |    62.11 | Gearbox Collectibles      |
+| 1948 Porsche Type 356 Roadster          |    62.16 | Gearbox Collectibles      |
+| 1941 Chevrolet Special Deluxe Cabriolet |    64.58 | Exoto Designs             |
+| 1965 Aston Martin DB5                   |    65.96 | Classic Metal Creations   |
+| 2002 Suzuki XREO                        |    66.27 | Unimax Art Galleries      |
+| 1928 British Royal Navy Airplane        |    66.74 | Classic Metal Creations   |
+| 1997 BMW F650 ST                        |    66.92 | Exoto Designs             |
+| Collectable Wooden Train                |    67.56 | Carousel DieCast Legends  |
+| Diamond T620 Semi-Skirted Tanker        |    68.29 | Highway 66 Mini Classics  |
+| 1903 Ford Model A                       |    68.30 | Unimax Art Galleries      |
+| America West Airlines B757-200          |    68.80 | Motor City Art Classics   |
+| 1996 Moto Guzzi 1100i                   |    68.99 | Highway 66 Mini Classics  |
+| 1992 Porsche Cayenne Turbo Silver       |    69.78 | Exoto Designs             |
+| 1957 Corvette Convertible               |    69.93 | Classic Metal Creations   |
+| 1928 Mercedes-Benz SSK                  |    72.56 | Gearbox Collectibles      |
+| 1952 Citroen-15CV                       |    72.82 | Exoto Designs             |
+| 1976 Ford Gran Torino                   |    73.49 | Gearbox Collectibles      |
+| 1964 Mercedes Tour Bus                  |    74.86 | Unimax Art Galleries      |
+| 1968 Dodge Charger                      |    75.16 | Welly Diecast Productions |
+| 1980s Black Hawk Helicopter             |    77.27 | Red Start Diecast         |
+| 1958 Setra Bus                          |    77.90 | Welly Diecast Productions |
+| 1992 Ferrari 360 Spider red             |    77.90 | Unimax Art Galleries      |
++-----------------------------------------+----------+---------------------------+
+36 rows in set (0.00 sec)
+
+mysql>
